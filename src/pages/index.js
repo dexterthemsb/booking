@@ -7,7 +7,7 @@ import {
   Text
 } from "@chakra-ui/react";
 import Head from "next/head";
-import Link from "next/link";
+import { useRouter } from "next/router";
 import { useContext } from "react";
 import {
   Box as BoxIcon,
@@ -16,9 +16,12 @@ import {
 } from "react-feather";
 import PageLoader from "../components/pageLoader";
 import DataContext from "../contexts/dataContext";
+import FromContext from "../contexts/formContext";
 export default function Home() {
+  const router = useRouter();
   const { Buildings, MeetingRooms, Meetings, loading } =
     useContext(DataContext);
+  const { clearAll } = useContext(FromContext);
 
   const CARDS = [
     {
@@ -40,6 +43,11 @@ export default function Home() {
       bg: "cyan"
     }
   ];
+
+  const handleAddMeeting = () => {
+    clearAll();
+    router.push("/select-time");
+  };
 
   return (
     <>
@@ -97,19 +105,15 @@ export default function Home() {
             </Box>
 
             <Box mt="12" textAlign="right">
-              <Link href="/select-time">
-                <a>
-                  <Button
-                    w={["full", "fit-content"]}
-                    ml={[0, 4]}
-                    variant="solid"
-                    colorScheme="blue"
-                    onClick={() => localStorage.clear()}
-                  >
-                    Add New Meeting
-                  </Button>
-                </a>
-              </Link>
+              <Button
+                w={["full", "fit-content"]}
+                ml={[0, 4]}
+                variant="solid"
+                colorScheme="blue"
+                onClick={() => handleAddMeeting()}
+              >
+                Add New Meeting
+              </Button>
             </Box>
           </Container>
         )}

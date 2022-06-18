@@ -7,6 +7,7 @@ import {
 } from "@apollo/client";
 import { Box, ChakraProvider } from "@chakra-ui/react";
 import { DataContextProvider } from "../contexts/dataContext";
+import { FromContextProvider } from "../contexts/formContext";
 import "../styles/globals.css";
 
 const link = from([
@@ -19,11 +20,13 @@ function MyApp({ Component, pageProps }) {
   return (
     <ApolloProvider client={gqlClient}>
       <DataContextProvider>
-        <ChakraProvider>
-          <Box bg="gray.50">
-            <Component {...pageProps} />
-          </Box>
-        </ChakraProvider>
+        <FromContextProvider>
+          <ChakraProvider>
+            <Box bg="gray.50">
+              <Component {...pageProps} />
+            </Box>
+          </ChakraProvider>
+        </FromContextProvider>
       </DataContextProvider>
     </ApolloProvider>
   );

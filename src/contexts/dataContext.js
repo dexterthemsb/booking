@@ -1,9 +1,7 @@
-import { useQuery } from "@apollo/client/react";
 import { createContext, useEffect, useState } from "react";
-import { LOAD_ALL } from "../graphql/queries";
+import { DUMMY } from "../data/data";
 
 const initial = {
-  mounting: true,
   Buildings: [],
   MeetingRooms: [],
   Meetings: []
@@ -12,13 +10,25 @@ const initial = {
 const DataContext = createContext(initial);
 
 export const DataContextProvider = ({ children }) => {
-  const { loading, data } = useQuery(LOAD_ALL);
-
   const [Buildings, setBuildings] = useState(initial.Buildings);
   const [MeetingRooms, setMeetingRooms] = useState(initial.MeetingRooms);
   const [Meetings, setMeetings] = useState(initial.Meetings);
 
+  const recommendRooms = filters => {
+    const rooms = MeetingRooms.filter(
+      room => room.building === filters.buildingID
+    );
+
+    return rooms;
+  };
+
+  const addMeeting = data => {
+    setMeetings([...Meetings, data]);
+  };
+
   const findEntity = (name, id) => {
+    if (!id) return null;
+
     const temp = { Buildings, MeetingRooms, Meetings };
     const res = temp[name].filter(obj => obj.id.toString() === id.toString());
 
@@ -28,14 +38,13 @@ export const DataContextProvider = ({ children }) => {
   const setAll = data => {
     const { Buildings, MeetingRooms, Meetings } = data;
 
+    // reduce arrays -> objects
     setBuildings([...Buildings]);
     setMeetingRooms([...MeetingRooms]);
     setMeetings([...Meetings]);
   };
 
-  useEffect(() => {
-    if (!loading) setAll(data);
-  }, [loading, data]);
+  useEffect(() => setAll(DUMMY), []);
 
   return (
     <DataContext.Provider
@@ -48,7 +57,9 @@ export const DataContextProvider = ({ children }) => {
         setMeetings,
         setAll,
         findEntity,
-        loading
+        recommendRooms,
+        addMeeting,
+        loading: false
       }}
     >
       {children}
