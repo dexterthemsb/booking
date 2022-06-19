@@ -14,7 +14,7 @@ import { ChevronLeft as ChevronLeftIcon } from "react-feather";
 import { v4 as uuid4 } from "uuid";
 import CustomModal from "../components/CustomModal";
 import CustomSelect from "../components/CustomSelect";
-import PageLoader from "../components/pageLoader";
+import PageLoader from "../components/PageLoader";
 import DataContext from "../contexts/dataContext";
 import FormContext from "../contexts/formContext";
 

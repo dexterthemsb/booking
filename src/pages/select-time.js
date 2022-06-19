@@ -14,7 +14,7 @@ import {
   ChevronLeft as ChevronLeftIcon,
   ChevronRight as ChevronRightIcon
 } from "react-feather";
-import PageLoader from "../components/pageLoader";
+import PageLoader from "../components/PageLoader";
 import DataContext from "../contexts/dataContext";
 import FormField from "../components/FormField";
 import CustomModal from "../components/CustomModal";
