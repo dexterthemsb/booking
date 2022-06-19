@@ -97,8 +97,7 @@ export default function SelectBuilding() {
       localStorage.clear();
       router.replace("/select-time");
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [mounting]);
+  }, [mounting, title, date, startTime, endTime, buildingID, router]);
 
   return (
     <>
