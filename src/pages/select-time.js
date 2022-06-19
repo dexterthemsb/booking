@@ -11,7 +11,6 @@ import { useRouter } from "next/router";
 import Head from "next/head";
 import { useContext } from "react";
 import {
-  ChevronDown,
   ChevronLeft as ChevronLeftIcon,
   ChevronRight as ChevronRightIcon
 } from "react-feather";
@@ -20,6 +19,7 @@ import DataContext from "../contexts/dataContext";
 import FormField from "../components/FormField";
 import CustomModal from "../components/CustomModal";
 import FormContext from "../contexts/formContext";
+import CustomSelect from "../components/CustomSelect";
 
 export default function SelectTime() {
   const router = useRouter();
@@ -129,18 +129,17 @@ export default function SelectTime() {
                       onChange={e => setEndTime(e.target.value)}
                     />
                   </SimpleGrid>
-                  <SimpleGrid mb="8" columns={[1, 1, 2]} gap="4">
-                    <FormField
+                  <SimpleGrid mb="8" columns={[1, 1, 3]} gap="4">
+                    <CustomSelect
                       required
                       w="full"
                       py="2"
-                      cursor="pointer"
                       variant="unstyled"
-                      placeholder="Select Building"
-                      label="Meeting Building"
-                      value={getBuildingName()}
                       onClick={onOpen}
                       onChange={() => {}}
+                      value={getBuildingName()}
+                      label="Meeting Building *"
+                      placeholder="Select Building"
                     />
                     <CustomModal
                       isOpen={isOpen}

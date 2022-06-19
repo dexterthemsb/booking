@@ -13,7 +13,7 @@ import { useContext, useEffect } from "react";
 import { ChevronLeft as ChevronLeftIcon } from "react-feather";
 import { v4 as uuid4 } from "uuid";
 import CustomModal from "../components/CustomModal";
-import FormField from "../components/FormField";
+import CustomSelect from "../components/CustomSelect";
 import PageLoader from "../components/pageLoader";
 import DataContext from "../contexts/dataContext";
 import FormContext from "../contexts/formContext";
@@ -137,12 +137,11 @@ export default function SelectBuilding() {
                   </Text>
                 </Box>
                 <Box mt="8">
-                  <SimpleGrid mb="8" columns={[1, 1, 2]} gap="4">
-                    <FormField
+                  <SimpleGrid mb="8" columns={[1, 1, 3]} gap="4">
+                    <CustomSelect
                       required
                       w="full"
                       py="2"
-                      cursor="pointer"
                       variant="unstyled"
                       placeholder="Select Meeting Room"
                       label="Meeting Room"
