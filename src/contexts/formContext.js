@@ -52,6 +52,10 @@ export const FromContextProvider = ({ children }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  useEffect(() => setRoomID(""), [buildingID]);
+
+  useEffect(() => localStorage.setItem("roomID", roomID), [roomID]);
+
   return (
     <FromContext.Provider
       value={{
