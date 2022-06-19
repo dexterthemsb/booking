@@ -14,7 +14,7 @@ import {
   Bell as BellIcon,
   Briefcase as BriefcaseIcon
 } from "react-feather";
-import PageLoader from "../components/pageLoader";
+import PageLoader from "../components/PageLoader";
 import DataContext from "../contexts/dataContext";
 import FromContext from "../contexts/formContext";
 export default function Home() {
