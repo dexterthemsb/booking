@@ -1,3 +1,6 @@
+// dummy data used as the data in gql api is not clean
+// duplicate ids for meeting rooms
+
 export const DUMMY = {
   Buildings: [
     {

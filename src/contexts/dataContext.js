@@ -26,6 +26,7 @@ export const DataContextProvider = ({ children }) => {
     setMeetings([...Meetings, data]);
   };
 
+  // fx not required after reducing states array -> objects
   const findEntity = (name, id) => {
     if (!id) return null;
 
