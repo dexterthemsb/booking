@@ -161,6 +161,7 @@ export default function SelectTime() {
                           <Box w="full" textAlign="left">
                             <Text>{building.name}</Text>
                             <Text
+                              mt="1"
                               fontSize="sm"
                               fontWeight="normal"
                               color="gray.500"

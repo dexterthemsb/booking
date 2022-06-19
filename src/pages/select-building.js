@@ -66,6 +66,7 @@ export default function SelectBuilding() {
       (obj, cur) => ({ ...obj, [cur]: temp[cur] }),
       {}
     );
+    console.log(recommendRooms(filters));
     return recommendRooms(filters);
   };
 
@@ -167,17 +168,15 @@ export default function SelectBuilding() {
                         >
                           <Box w="full" textAlign="left">
                             <Text>
-                              {findEntity("MeetingRooms", room.id).name}
+                              {room.name} (Floor {room.floor})
                             </Text>
                             <Text
+                              mt="1"
                               fontSize="sm"
                               fontWeight="normal"
                               color="gray.500"
                             >
-                              {`Slots Booked: ${
-                                findEntity("MeetingRooms", room.id).meetings
-                                  .length
-                              }`}
+                              {`Slots Booked: ${room.meetings.length}`}
                             </Text>
                           </Box>
                         </Button>
